@@ -5,7 +5,7 @@ class Coche:
         self.__aceleracion=aceleracion
         self.__velocidad=0
     def getColor(self):
-        return self.__color
+        return str(self.__color)
 
     def setColor(self, color):
         self.__color=color
@@ -21,22 +21,30 @@ class Coche:
 
 
     def acelera(self):
-        self.velocidad += self.aceleracion
+        self.__velocidad += self.getAceleracion()
     def frena(self):
-        self.velocidad -= self.aceleracion
-        if self.velocidad < 0:
-            self.velocidad = 0
+        self.__velocidad -= self.getAceleracion()
+        if self.getVelocidad() < 0:
+            self.__velocidad = 0
+
     def imprimir(self):
-        return "Tengo un "+ str(type(c)).split(".")[1].split("'")[0] + " " + c.color + " con aceleracion a " + str(c.aceleracion) + " y velocidad " + str(
-            c.velocidad)
+        return "Tengo un "+ str(type(self)).split(".")[1].split("'")[0] + " " + self.getColor() + " con aceleracion a " + str(self.getAceleracion()) + " y velocidad " + str(
+            str(self.getVelocidad()))
 
 class CocheVolador(Coche):
-    ruedas = 6
+    __ruedas = 6
     def __init__(self, color, aceleracion=10, volando=False):
         super().__init__(color,aceleracion)
-        self.volando=volando
+        self.__volando=volando
+
+    def getVolando(self):
+        return self.__volando
+
+    def setVolando(self, volando):
+        self.__volando = volando
+
     def imprimir(self):
-        if self.volando:
+        if self.getVolando():
             return (super().imprimir() + "  y volando")
         else:
             return (super().imprimir() + " y en el suelo")
