@@ -1,5 +1,5 @@
 class Coche:
-    __ruedas=4
+    ruedas=4
     def __init__(self, color, aceleracion):
         self.__color=color
         self.__aceleracion=aceleracion
@@ -16,10 +16,6 @@ class Coche:
     def getVelocidad(self):
         return self.__velocidad
 
-    def getRuedas(self):
-        return self.__ruedas
-
-
     def acelera(self):
         self.__velocidad += self.getAceleracion()
     def frena(self):
@@ -32,7 +28,7 @@ class Coche:
             str(self.getVelocidad()))
 
 class CocheVolador(Coche):
-    __ruedas = 6
+    ruedas = 6
     def __init__(self, color, aceleracion=10, volando=False):
         super().__init__(color,aceleracion)
         self.__volando=volando
@@ -56,7 +52,7 @@ cv1= CocheVolador('Amarillo',15,True)
 cv2= CocheVolador('Verde',45)
 cv3= CocheVolador('Rosa')
 
-c1.aceleracion = 50
+c1._Coche__aceleracion = 50
 
 Coches = [c1, c2, cv1, cv2, cv3]
 print("Numero de ruedas: "+ str(Coche.ruedas))
